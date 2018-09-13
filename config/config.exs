@@ -10,11 +10,11 @@ use Mix.Config
 
 # You can configure your application as:
 #
-#     config :wage_calculator, key: :value
+#     config :payslip_calculator, key: :value
 #
 # and access this configuration in your application as:
 #
-#     Application.get_env(:wage_calculator, :key)
+#     Application.get_env(:payslip_calculator, :key)
 #
 # You can also configure a 3rd-party app:
 #
