@@ -23,3 +23,8 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/payslip_calculator](https://hexdocs.pm/payslip_calculator).
 
+## TODO
+* Check the terminology for everything eg. **lump sum**
+* Refactor Calculator tests to be grouped and defined (currently in single test)
+* Add quality/static analysis checks
+* git hooks
