@@ -10,6 +10,7 @@ defmodule PayslipCalculator do
   end
 
   def income_tax(base_rate, gross_income, tax_free_amount, multiplier) do
+    # {base_rate, tax_free_amount, multiplier} = tax_table.lookup(gross_income)
     round((base_rate + (gross_income - tax_free_amount) * multiplier) / 12)
   end
 

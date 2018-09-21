@@ -26,5 +26,5 @@ be found at [https://hexdocs.pm/payslip_calculator](https://hexdocs.pm/payslip_c
 ## TODO
 * Check the terminology for everything eg. **lump sum**
 * Refactor Calculator tests to be grouped and defined (currently in single test)
-* Add quality/static analysis checks
-* git hooks
+* Property-based testing
+* Add Pipe operator to calculation functions
