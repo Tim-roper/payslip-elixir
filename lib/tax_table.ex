@@ -12,9 +12,9 @@ defmodule TaxTable do
     {180_001, @max_salary} => {54_547, 180_000, 0.45}
   }
 
-  # def lookup(gross_salary) do
-
-  # end
+  def lookup(gross_salary) do
+    Map.get(@table, get_bracket(gross_salary))
+  end
 
   def get_bracket(gross_salary) do
     Enum.find(Map.keys(@table), fn x -> elem(x, 0) <= gross_salary && elem(x, 1) > gross_salary end) 

@@ -2,11 +2,11 @@ defmodule TaxTableTest do
   use ExUnit.Case
 
   test "Returns the tax table components" do
-    # assert TaxTable.lookup(7000) = {0, 00}
-    # assert TaxTable.lookup(19_000) = {0, 18_200, 0.19}
-    # assert TaxTable.lookup(60_050) = {3572, 37_000, 0.325}
-    # assert TaxTable.lookup(110_000) = {17_547, 80_000, 0.37}
-    # assert TaxTable.lookup(200_000) = {54_547, 180_000, 0.45}
+    assert TaxTable.lookup(7000) == {0, 0, 0}
+    assert TaxTable.lookup(19_000) == {0, 18_200, 0.19}
+    assert TaxTable.lookup(60_050) == {3572, 37_000, 0.325}
+    assert TaxTable.lookup(110_000) == {17_547, 80_000, 0.37}
+    assert TaxTable.lookup(200_000) == {54_547, 180_000, 0.45}
   end
 
   test "Finds the correct key for the gross salary" do
