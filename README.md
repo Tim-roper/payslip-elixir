@@ -28,3 +28,5 @@ be found at [https://hexdocs.pm/payslip_calculator](https://hexdocs.pm/payslip_c
 * Refactor Calculator tests to be grouped and defined (currently in single test)
 * Property-based testing
 * Add Pipe operator to calculation functions
+* Add quality/static analysis checks
+* git hooks
