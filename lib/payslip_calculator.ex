@@ -1,8 +1,8 @@
 defmodule PayslipCalculator do
+  @moduledoc "Calculates monthly salaray and tax"
 
   def monthly_pay(annual_salary, super_rate) do
-    # TODO Below hard-coded figures should be derived from a tax table or something
-    net_income(gross_income(annual_salary), income_tax(3572, annual_salary, 37000, 0.325))
+    net_income(gross_income(annual_salary), income_tax(3_572, annual_salary, 37_000, 0.325))
   end
 
   def gross_income(annual_salary) do
