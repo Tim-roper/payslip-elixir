@@ -1,5 +1,6 @@
 defmodule TaxTableTest do
   use ExUnit.Case
+  use ExUnitProperties
 
   test "Returns the tax table components" do
     assert TaxTable.lookup(7000) == {0, 0, 0}
@@ -15,6 +16,13 @@ defmodule TaxTableTest do
     assert TaxTable.get_bracket(60_050) == {37_001, 80_000}
     assert TaxTable.get_bracket(120_000) == {80_001, 180_000}
     assert TaxTable.get_bracket(250_000) == {180_001, TaxTable.get_max_salary}
+  end
+
+  property "All Valid salaries have a tax bracket" do
+    check all gross_salary <- integer(0..TaxTable.get_max_salary),
+              tax_bracket = TaxTable.get_bracket(gross_salary) do
+       assert Enum.any?(TaxTable.get_tax_brackets, fn x -> x == tax_bracket end)
+    end
   end
 
 end

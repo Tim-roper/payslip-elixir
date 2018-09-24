@@ -24,4 +24,8 @@ defmodule TaxTable do
     @max_salary
   end
 
+  def get_tax_brackets() do
+    Map.keys(@table)
+  end
+
 end
