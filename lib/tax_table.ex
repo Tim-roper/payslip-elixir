@@ -1,6 +1,5 @@
 defmodule TaxTable do
   @moduledoc "Represent a a table of taxation amounts"
-  # {base_rate, tax_free_amount, multiplier} = tax_table.lookup(gross_income)
   
   @max_salary 999_999_999
 
