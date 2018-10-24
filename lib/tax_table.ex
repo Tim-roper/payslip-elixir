@@ -1,6 +1,6 @@
 defmodule TaxTable do
   @moduledoc "Represent a a table of taxation amounts"
-  
+
   @max_salary 999_999_999
 
   @table %{
@@ -12,11 +12,8 @@ defmodule TaxTable do
   }
 
   def lookup(gross_salary) do
-    Map.get(@table, get_bracket(gross_salary))
-  end
-
-  def get_bracket(gross_salary) do
-    Enum.find(Map.keys(@table), fn x -> elem(x, 0) <= gross_salary && elem(x, 1) > gross_salary end) 
+    {_, values} = Enum.find(@table, fn x -> TableLookup.in_bracket?(gross_salary, elem(x, 0)) end)
+    values
   end
 
   def get_max_salary() do

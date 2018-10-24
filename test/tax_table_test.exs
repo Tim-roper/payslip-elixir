@@ -10,18 +10,25 @@ defmodule TaxTableTest do
     assert TaxTable.lookup(200_000) == {54_547, 180_000, 0.45}
   end
 
-  test "Finds the correct key for the gross salary" do
-    assert TaxTable.get_bracket(1500) == {0, 18_000}
-    assert TaxTable.get_bracket(20_000) == {18_201, 37_000}
-    assert TaxTable.get_bracket(60_050) == {37_001, 80_000}
-    assert TaxTable.get_bracket(120_000) == {80_001, 180_000}
-    assert TaxTable.get_bracket(250_000) == {180_001, TaxTable.get_max_salary}
+  property "Valid salaries have an associated base rate" do
+    check all gross_salary <- integer(0..TaxTable.get_max_salary),
+              {base_rate, _, _} = TaxTable.lookup(gross_salary) do
+       assert base_rate >= 0
+    end
   end
 
-  property "All Valid salaries have a tax bracket" do
+  property "Valid salaries have an associated tax free amount" do
     check all gross_salary <- integer(0..TaxTable.get_max_salary),
-              tax_bracket = TaxTable.get_bracket(gross_salary) do
-       assert Enum.any?(TaxTable.get_tax_brackets, fn x -> x == tax_bracket end)
+              {_, tax_free_amount, _} = TaxTable.lookup(gross_salary) do
+       assert tax_free_amount >= 0
+    end
+  end
+
+  property "Valid salaries have an associated multipler" do
+    check all gross_salary <- integer(0..TaxTable.get_max_salary),
+              {_, _, multiplier} = TaxTable.lookup(gross_salary) do
+       assert multiplier >= 0.0
+       assert multiplier < 1.0
     end
   end
 
